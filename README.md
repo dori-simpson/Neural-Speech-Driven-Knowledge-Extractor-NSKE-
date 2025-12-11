@@ -67,12 +67,10 @@ Kibana Dashboard
 
  # Here is a simple explanation of each part of this code using python and Jupyter notebooks. Everyone needs a refresher!
 
-
-# **PART 1 — Getting the videos**
-
+## **PART 1 — Getting the Videos**
 ```bash
-!aws s3 cp ...
-````
+!aws s3 cp s3://source-bucket/path/ s3://your-bucket/input/ --recursive
+
 
 Think of S3 like a big toy box in the cloud.
 This command copies videos from one box to your own box so you can use them.
