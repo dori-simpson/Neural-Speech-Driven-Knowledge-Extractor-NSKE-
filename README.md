@@ -68,7 +68,7 @@ Kibana Dashboard
  # Here is a simple explanation of each part of this code using python and Jupyter notebooks. Everyone needs a refresher!
 
 
-# **PART 1 — Getting the Videos**
+# **PART 1 — Getting the videos**
 
 ```bash
 !aws s3 cp ...
