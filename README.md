@@ -10,7 +10,7 @@ This project demonstrates an end-to-end **AI-powered video understanding system*
 
 ---
 
-##  Features
+#  Features
 
 - **Video ingestion** from Amazon S3  
 - **Automatic transcription** using AWS Transcribe  
@@ -24,7 +24,7 @@ This project demonstrates an end-to-end **AI-powered video understanding system*
 
 ---
 
-##  Architecture
+#  Architecture
 
 ```
 
