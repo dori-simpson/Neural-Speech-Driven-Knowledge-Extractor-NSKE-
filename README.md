@@ -50,7 +50,7 @@ Kibana Dashboard
 
 ---
 
-##  Technologies Used
+#  Technologies Used
 
 - **Python**
 - **Jupyter Notebook**
@@ -65,32 +65,10 @@ Kibana Dashboard
 
 ---
 
-##  Repository Structure
+ # Here is a simple explanation of each part of this code using python and Jupyter notebooks. Everyone needs a refresher!
 
-```
 
-/notebooks
-pipeline.ipynb        # Main project notebook
-/src
-utils.py              # Helper functions
-/output
-transcriptions/        # AWS Transcribe output
-comprehend/            # Comprehend output
-README.md                 # This file
-
-````
-
-*(Your actual structure may vary—adjust as needed.)*
-
----
-
-#  **Pipeline Walkthrough (Simple Explanation)**
-
-Below is a human-friendly explanation of each step of the pipeline.
-
----
-
-## **PART 1 — Getting the Videos**
+# **PART 1 — Getting the Videos**
 
 ```bash
 !aws s3 cp ...
@@ -101,7 +79,7 @@ This command copies videos from one box to your own box so you can use them.
 
 ---
 
-## **PART 2 — Listing What’s in S3**
+# **PART 2 — Listing What’s in S3**
 
 ```python
 conn = client('s3')
@@ -113,7 +91,7 @@ This looks inside your S3 bucket and prints the names of the videos.
 
 ---
 
-## **PART 3 — Importing Tools**
+# **PART 3 — Importing Tools**
 
 ```python
 import boto3, numpy, pandas, ...
@@ -131,7 +109,7 @@ These are all helpers:
 
 ---
 
-## **PART 4 — Turning Videos into Text (Transcribing)**
+# **PART 4 — Turning Videos into Text (Transcribing)**
 
 ```python
 transcribe_client.start_transcription_job(...)
@@ -142,7 +120,7 @@ This tells AWS Transcribe:
 
 ---
 
-## **PART 5 — Storing Output Filenames**
+# **PART 5 — Storing Output Filenames**
 
 ```python
 output_files = []
@@ -152,7 +130,7 @@ This list remembers which text file came from which video.
 
 ---
 
-## **PART 6 — Normalizing the Text**
+# **PART 6 — Normalizing the Text**
 
 ```python
 def normalize_text(content):
@@ -168,7 +146,7 @@ This "washes" the text:
 
 ---
 
-## **PART 7 — Preparing Text for Comprehend**
+# **PART 7 — Preparing Text for Comprehend**
 
 ```python
 upload_comprehend_s3_csv(...)
@@ -179,7 +157,7 @@ You upload cleaned text into S3 in CSV form so Comprehend can read it.
 
 ---
 
-## **PART 8 — Extracting Key Phrases**
+# **PART 8 — Extracting Key Phrases**
 
 ```python
 start_key_phrases_detection_job(...)
@@ -190,7 +168,7 @@ This tells Comprehend:
 
 ---
 
-## **PART 9 — Waiting for Comprehend**
+# **PART 9 — Waiting for Comprehend**
 
 ```python
 while ... != 'COMPLETED':
@@ -201,7 +179,7 @@ You check every 10 seconds until the job is done.
 
 ---
 
-## **PART 10 — Getting the Results**
+# **PART 10 — Getting the Results**
 
 ```python
 download_file(...)
@@ -212,7 +190,7 @@ This downloads Comprehend's results (in a zip-like tar file), opens it, and extr
 
 ---
 
-## **PART 11 — Extracting Names, Places, Organizations**
+# **PART 11 — Extracting Names, Places, Organizations**
 
 ```python
 extract_entities(...)
@@ -229,7 +207,7 @@ It’s like circling special words in a story.
 
 ---
 
-## **PART 12 — Merging All Data Into One Table**
+# **PART 12 — Merging All Data Into One Table**
 
 ```python
 mergedDf = df.merge(...)
@@ -246,7 +224,7 @@ into one clean dataset.
 
 ---
 
-## **PART 13 — Creating the OpenSearch Domain**
+# **PART 13 — Creating the OpenSearch Domain**
 
 ```python
 es_client.create_elasticsearch_domain(...)
@@ -256,13 +234,13 @@ This builds a search engine (like your own private Google) for exploring the res
 
 ---
 
-## **PART 14 — Waiting for the Domain**
+# **PART 14 — Waiting for the Domain**
 
 Like waiting for a machine to warm up.
 
 ---
 
-## **PART 15 — Indexing Into OpenSearch**
+# **PART 15 — Indexing Into OpenSearch**
 
 ```python
 helpers.bulk(...)
@@ -276,7 +254,7 @@ Uploads everything into OpenSearch so you can:
 
 ---
 
-## **PART 16 — Opening Your Dashboard**
+# **PART 16 — Opening Your Dashboard**
 
 ```python
 print(f'https://{es_endpoint}/_plugin/kibana')
